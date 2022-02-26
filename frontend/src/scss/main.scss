@@ -1,0 +1,74 @@
+$primary: #FDC000;
+$container-max-widths: (
+  sm: 540px,
+  md: 614px,
+  lg: 834px,
+  xl: 100%,
+);
+
+// Required
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$desktop: "screen and (min-width: 1050px)";
+$tablet: "screen and (max-width: 1049px)";
+$mobile: "screen and (max-width: 768px)";
+
+$main-color1: #6993c4;
+$main-color2: #7184bd;
+$main-color3: #7d74b7;
+$main-color4: #8963a1;
+$main-color5: #93518b;
+$main-color6: #983e72;
+$main-color7: #f7786b;
+$main-color8: #ccc;
+$main-color9: #f7f7f7;
+
+html {
+  font-size: 12px;
+   overflow-x: hidden;
+}
+body {
+  margin: 0 auto;
+}
+
+a {
+  all: unset;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}
+
+button, input, ul, li {
+    all: unset;
+}
+
+button:active {
+  transform: scale(.99);
+}
+
+.inner {
+  width: 1050px;
+  @media #{$tablet} {
+    width: 100vw;
+    }
+  margin: 0 auto;
+}
+
+.heading {
+  all: unset;
+  position: absolute;
+  width: 0;
+  height: 0;
+  font-size: 0;
+}

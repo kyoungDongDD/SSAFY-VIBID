@@ -1,0 +1,56 @@
+uploadPath:
+  path: "./imgs/"
+
+server:
+  ssl:
+    key-store: classpath:i6b207.p.ssafy.io.p12
+    key-store-password: vibid
+    key-store-type: PKCS12
+    key-alias: ssafy
+
+openvidu:
+  url: https://i6b207.p.ssafy.io:4443
+  secret: VklCSUQtU0VDUkVULUtFWQo
+
+spring:
+  profiles:
+    include: oauth, mail
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        -strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      hibernate:
+        show_sql: true
+
+  servlet:
+    multipart:
+      maxFileSize: 50MB
+      maxRequestSize: 50MB
+
+  # 회원 이메일 인증을 위한 SMTP
+
+
+  sql:
+    init:
+      mode: always
+
+jwt:
+  token:
+    header: Authorization
+    issuer: VIBID
+    secret: U1NBRlk2LURBRUpFT04yLUIyMDctVklCSUQtUFJPSkVDVAo= # "ssafy-6-daejeon-2-b207-vibid" Base64 Encoding 대문자 8, 소문자 4
+    expirySeconds: 86400
+
+logging:
+  level:
+    org.hibernate.SQL: debug  # log를 통해 Hibernate 실행 SQL을 남긴다.
+
+vibid:
+  badWordPath: "./fwords/fword_list.txt"
+  address: http://i6b207.p.ssafy.io:80
+  server: https://i6b207.p.ssafy.io:8080
+  login-redirect: http://i6b207.p.ssafy.io:80
+#  login-redirect: http://i6b207.p.ssafy.io:80/login/oauth2/redirect

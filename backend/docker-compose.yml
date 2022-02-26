@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  boot-db:
+    image: mysql:5.7.35
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=ssafy
+      - MYSQL_DATABASE=vibid
+      - MYSQL_USER=ssafy
+      - MYSQL_PASSWORD=ssafy
+    ports:
+      - "17177:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      - springboot-mysql-net
+  
+  spring-boot:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - boot-db
+    volumes:
+      - ./imgs:/imgs
+      - ./fwords:/fwords
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://boot-db:3306/vibid?useSSL=false&serverTimezone=UTC&autoReconnect=true
+      - SPRING_DATASOURCE_USERNAME=ssafy
+      - SPRING_DATASOURCE_PASSWORD=ssafy
+    networks:
+      - springboot-mysql-net
+
+networks:
+  springboot-mysql-net:

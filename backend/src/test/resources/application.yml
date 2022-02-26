@@ -1,0 +1,44 @@
+uploadPath:
+  path : "c:/image/"
+
+server:
+  ssl:
+    enabled: false
+    key-store: classpattrueh:openvidu-selfsigned.jks
+    key-store-password: openvidu
+    key-store-type: JKS
+    key-alias: openvidu-selfsigned
+
+openvidu:
+  url: https://localhost:4443/
+  secret: MY_SECRET
+
+spring:
+  datasource:
+    # h2 database
+        url: jdbc:h2:tcp://localhost/~/vibid
+        username : sa
+        password:
+        driver-class-name: org.h2.Driver
+
+    #mysql
+#    url: jdbc:mysql://localhost:17177
+#    username: ssafy
+#    password: ssafy
+#    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    #    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create
+      properties:
+      format_sql: true
+
+  security:
+    user:
+      name: admin
+      password: 1234
+
+logging:
+  level:
+    org.hibernate.SQL: debug  # log를 통해 Hibernate 실행 SQL을 남긴다.
